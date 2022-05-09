@@ -10,7 +10,7 @@ table {
     color: #474955;
  }
 
- th {
+ .headerWithFilter {
     cursor: pointer;
  }
 
@@ -18,16 +18,10 @@ table {
     height: 54px;
     background-color: mix($color,#fff,65%);
     box-shadow: 0px 4px 27px rgba(230, 231, 234, 0.78);
-    color: #474955;  
-    
-    
+    color: #474955;     
 }
 
-.tableId {
-    padding: 20px 50px;
-}
-
-.tableData {
+.columns {
     padding: 10px 10px;
 }
 

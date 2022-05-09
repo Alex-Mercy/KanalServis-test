@@ -6,37 +6,35 @@ import sortImageByAsc from '../../assets/images/sortByAsc.png';
 import sortImageByDesc from '../../assets/images/sortByDesc.png';
 
 
-function Table({headers}) {
+function Table({headers, data}) {
     return (
         <div>
             <table>
-            <tbody>
+            <thead>
                 <tr className={styles.tableHeader}>
                 <th>Дата</th>
                 {headers.slice(1).map(header => {
-                    return <th key={header.id}>
+                    return <th 
+                    className={styles.headerWithFilter} 
+                     key={header.id}>
                     {header.name}
                     <img className={styles.sortImage} 
                     src={header.name === 'Название' ? sortImageByDesc : sortImage} 
                     alt='Sort Image' 
-
                     />
                     </th>
                 })}
                 </tr>
-                <tr>
-                    <td className={styles.tableId}>1</td>
-                    <td className={styles.tableData}>sunt aut facere repellat provident occaecati excepturi optio reprehenderit</td>
-                    <td className={styles.tableData}>quia et suscipit\nsuscipit recusandae consequuntur expedita et cum\nreprehenderit molestiae ut</td>
-                    <td className={styles.tableData}>quia et suscipit\nsuscipit recusandae consequuntur expedita et cum\nreprehenderit molestiae ut</td>
-                </tr>
-                <tr>
-                    <td className={styles.tableId}>1</td>
-                    <td className={styles.tableData}>sunt aut facere repellat provident occaecati excepturi optio reprehenderit</td>
-                    <td className={styles.tableData}>quia et suscipit\nsuscipit recusandae consequuntur expedita et cum\nreprehenderit molestiae ut</td>
-                    <td className={styles.tableData}>quia et suscipit\nsuscipit recusandae consequuntur expedita et cum\nreprehenderit molestiae ut</td>
-                </tr>
-                
+                </thead>
+                <tbody>
+                {data.map(item => {
+                    return <tr key={item.id} >
+                        <td className={styles.columns}>{item.date}</td>
+                        <td className={styles.columns}>{item.name}</td>
+                        <td className={styles.columns}>{item.quantity}</td>
+                        <td className={styles.columns}>{item.distance} Км</td>
+                    </tr>
+                })}
                 </tbody>
             </table>
         </div>
