@@ -1,0 +1,37 @@
+$color:#26A69A;
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+    margin: 15px 0;
+}
+ td {
+    border: 1px solid #E3E6EC;
+    color: #474955;
+ }
+
+ th {
+    cursor: pointer;
+ }
+
+.tableHeader {
+    height: 54px;
+    background-color: mix($color,#fff,65%);
+    box-shadow: 0px 4px 27px rgba(230, 231, 234, 0.78);
+    color: #474955;  
+    
+    
+}
+
+.tableId {
+    padding: 20px 50px;
+}
+
+.tableData {
+    padding: 10px 10px;
+}
+
+.sortImage {
+    width: 20px;
+    margin-left: 10px;
+}

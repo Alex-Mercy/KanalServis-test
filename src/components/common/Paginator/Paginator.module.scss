@@ -1,0 +1,22 @@
+$color:#26A69A;
+
+.pagination {
+  min-width: 300px;
+  margin-top: 5px;
+  }
+  
+  .pagination a {
+    color: #474955;
+    float: left;
+    padding: 8px 16px;
+    text-decoration: none;
+    border-radius: 20px;
+  }
+  
+  .pagination a.active {
+    background-color: mix($color,#fff,20%);
+    color: $color;
+  }
+  
+  .pagination a:hover:not(.active) {background-color: #ddd;
+}

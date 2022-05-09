@@ -1,0 +1,6 @@
+.searchSvg {
+    vertical-align: bottom;
+    margin-bottom: 20px;
+    filter: invert(49%) sepia(99%) saturate(340%) hue-rotate(125deg) brightness(93%) contrast(84%);
+    cursor: pointer;
+}
