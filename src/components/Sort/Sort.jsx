@@ -1,13 +1,15 @@
 import React, { Fragment, useEffect, useRef, useState } from 'react';
 import cn from "classnames";
+import { useDispatch } from 'react-redux';
 
 import styles from './Sort.module.scss'
+import { setSortBy } from '../../store/tableReducer';
 
 
-function Sort({ items }) {
+function Sort({ items, typeofFilter }) {
     const [visiblePopup, setVisiblePopup] = useState(false);
-    const [sortBy, setsortBy] = useState(items[0].name);
     const sortRef = useRef();
+    const dispatch = useDispatch();
 
     const toggleVisiblePopup = (e) => {
         e.preventDefault();
@@ -27,7 +29,8 @@ function Sort({ items }) {
     }, []);
 
     const selectItem = (e) => {
-        setsortBy(e.target.innerText);
+        dispatch(setSortBy(items.find(item => item.name === e.target.innerText).type));
+
     }
 
     return (
@@ -36,7 +39,7 @@ function Sort({ items }) {
         }, styles.dropdown)}>
             {items.map((item) => {
                 return <Fragment key={item.id} >
-                    <input type="radio" id={item.type} readOnly checked={item.name === sortBy ? true: false} />
+                    <input type="radio" id={item.type} readOnly checked={item.type === typeofFilter ? true: false} />
                     <label onClick={selectItem} htmlFor={item.type}>{item.name}</label>
                 </Fragment>
             })}

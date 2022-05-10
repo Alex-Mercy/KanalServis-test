@@ -10,11 +10,7 @@ import { onSetData } from '../../store/tableReducer';
 
 function TablePage() {
     const dispatch = useDispatch();
-    const {data, currentPage, perPage} = useSelector(({ table }) => table);
-
-    React.useEffect(() => {
-        dispatch(onSetData({currentPage, perPage}));
-    }, [dispatch, currentPage, perPage]);
+    const {data, currentPage, perPage, sortBy} = useSelector(({ table }) => table);
 
     const headers = [
         { id: 1, type: 'date', name: 'Дата' },
@@ -30,17 +26,23 @@ function TablePage() {
         { id: 4, type: 'less', name: 'Меньше' }
     ];
 
+    React.useEffect(() => {
+        dispatch(onSetData({currentPage, perPage, sortBy}));
+    }, [dispatch, currentPage, perPage, sortBy]);
+
+
     return (
         <div className={styles.wrapper}>
             <Table
                 headers={headers}
                 data={data}
+                sortBy={sortBy}
             />
             <div className={styles.footer}>
                 <div className={styles.filters}>
                     <Search />
                     <Sort items={filters} />
-                    <Sort items={headers.slice(1)} />
+                    <Sort items={headers.slice(1)} typeofFilter={sortBy} />
                 </div>
                 <Paginator />
             </div>

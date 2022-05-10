@@ -6,7 +6,8 @@ import sortImageByAsc from '../../assets/images/sortByAsc.png';
 import sortImageByDesc from '../../assets/images/sortByDesc.png';
 
 
-function Table({headers, data}) {
+
+function Table({headers, data, sortBy}) {
     return (
         <div>
             <table>
@@ -19,7 +20,7 @@ function Table({headers, data}) {
                      key={header.id}>
                     {header.name}
                     <img className={styles.sortImage} 
-                    src={header.name === 'Название' ? sortImageByDesc : sortImage} 
+                    src={header.type === sortBy ? sortImageByAsc : sortImage} 
                     alt='Sort png' 
                     />
                     </th>
