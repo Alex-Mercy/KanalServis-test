@@ -5,10 +5,10 @@ import { getData } from './api';
 
 const ON_SET_DATA = 'ON_SET_DATA';
 
-export function* setDataSaga({ payload: {currentPage, perPage, sortBy}  }) {
+export function* setDataSaga({ payload: {currentPage, perPage, sortBy, isAscOrder}  }) {
   try {
     yield put(setLoaded(false));
-    const response = yield getData(currentPage, perPage, sortBy);
+    const response = yield getData(currentPage, perPage, sortBy, isAscOrder);
     yield put(setData(response.data))
   } catch (error) {
     yield put(setDataFailure(error));

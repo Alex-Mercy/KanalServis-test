@@ -4,6 +4,7 @@ const SET_LOADED = 'SET_LOADED';
 const SET_DATA_FAILURE = 'SET_DATA_FAILURE';
 const SET_CURRENT_PAGE = 'SET_CURRENT_PAGE';
 const SET_SORT_BY = 'SET_SORT_BY';
+const TOGGLE_ORDER = 'TOGGLE_ORDER';
 
 const initialState = {
     isLoaded: false,
@@ -13,6 +14,7 @@ const initialState = {
     perPage: 5,
     totalCount: 22,
     sortBy: 'id',
+    isAscOrder: true,
 };
 
 
@@ -45,6 +47,11 @@ const tableReducer = (state = initialState, action) => {
                 ...state,
                 sortBy: action.payload,
             };
+            case TOGGLE_ORDER:
+            return {
+                ...state,
+                isAscOrder: action.payload,
+            };
         default:
             return state;
     }
@@ -57,6 +64,7 @@ export const setData = (data) => ({type: SET_DATA, payload: data})
 export const setDataFailure = (error) => ({type: SET_DATA_FAILURE, payload: error});
 export const setCurrentPage = (page) => ({type: SET_CURRENT_PAGE, payload: page});
 export const setSortBy = (type) => ({type: SET_SORT_BY, payload: type});
+export const toggleOrder = (isAscOrder) => ({type: TOGGLE_ORDER, payload: isAscOrder});
 
 
 export default tableReducer;
