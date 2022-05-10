@@ -4,6 +4,7 @@ $color:#26A69A;
   min-width: 300px;
   margin-top: 5px;
   }
+ 
   
   .pagination a {
     color: #474955;
@@ -19,4 +20,8 @@ $color:#26A69A;
   }
   
   .pagination a:hover:not(.active) {background-color: #ddd;
+}
+
+.notActive {
+  pointer-events: none;
 }

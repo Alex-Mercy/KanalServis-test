@@ -1,24 +1,60 @@
 import React from 'react'
-import styles from './Paginator.module.scss'
+import cn from "classnames";
+import { useSelector, useDispatch, } from 'react-redux';
 
-function Paginator({pagesCount}) {
+import styles from './Paginator.module.scss'
+import { setCurrentPage } from '../../../store/tableReducer';
+import { Link } from 'react-router-dom';
+
+function Paginator() {
+  const dispatch = useDispatch();
+  const { currentPage, perPage, totalCount } = useSelector(({ table }) => table);
+  const pagesCount = Math.ceil(totalCount / perPage);
   const pages = Array(pagesCount).fill().map((e, i) => i + 1);
+
+  const onIncrementPage = () => {
+      dispatch(setCurrentPage(currentPage + 1));
+  }
+
+  const onDecrementPage = () => {
+      dispatch(setCurrentPage(currentPage - 1));
+  }
+
 
   return (
     <div className={styles.pagination}>
-    <a href="#">&laquo;</a>
-    {pages.map(num => {
-        return <a key={num} href="#">{num}</a>
+      <Link
+        className={cn({
+          [styles.notActive]: currentPage < 2
+        })}
+        onClick={onDecrementPage}
+        to={`/${currentPage - 1}`}
+      >
+        &laquo;
+      </Link>
+      {pages.map((page, index) => {
+        return <Link
+          key={index}
+          to={`/${page}`}
+          className={cn({
+            [styles.active]: currentPage === page
+          })}
+          onClick={() => dispatch(setCurrentPage(page))}
+        >
+          {page}
+        </Link>
       })}
-      <a href="#">&raquo;</a>
-  
-  {/* <a href="#">1</a>
-  <a className={styles.active} href="#">2</a>
-  <a href="#">3</a>
-  <a href="#">4</a>
-  <a href="#">5</a> */}
-  
-</div>
+      <Link
+        onClick={onIncrementPage}
+        to={`/${currentPage + 1}`}
+        className={cn({
+          [styles.notActive]: currentPage === pagesCount
+        })}
+      >
+        &raquo;
+      </Link>
+
+    </div>
   )
 }
 

@@ -2,12 +2,15 @@ const ON_SET_DATA = 'ON_SET_DATA';
 const SET_DATA = 'SET_DATA';
 const SET_LOADED = 'SET_LOADED';
 const SET_DATA_FAILURE = 'SET_DATA_FAILURE';
+const SET_CURRENT_PAGE = 'SET_CURRENT_PAGE';
 
 const initialState = {
     isLoaded: false,
     data: [],
     error: null,
-    pagesCount: 5,
+    currentPage: 1,
+    perPage: 5,
+    totalCount: 22,
 };
 
 
@@ -30,30 +33,22 @@ const tableReducer = (state = initialState, action) => {
                 ...state,
                 error: action.payload,
             }; 
+            case SET_CURRENT_PAGE:
+            return {
+                ...state,
+                currentPage: action.payload,
+            };
         default:
             return state;
     }
 
 }
 
-export const onSetData= () => ({
-    type: ON_SET_DATA,
-});
-
-export const setLoaded = (payload) => ({
-    type: SET_LOADED,
-    payload,
-});
-
-export const setData = (data) => ({
-    type: SET_DATA,
-    payload: data
-})
-
-export const setDataFailure = (error) => ({
-    type: SET_DATA_FAILURE,
-    payload: error,
-  });
+export const onSetData= (data) => ({type: ON_SET_DATA, payload: data});
+export const setLoaded = (payload) => ({type: SET_LOADED, payload});
+export const setData = (data) => ({type: SET_DATA, payload: data})
+export const setDataFailure = (error) => ({type: SET_DATA_FAILURE, payload: error});
+export const setCurrentPage = (page) => ({type: SET_CURRENT_PAGE, payload: page});
 
 
 export default tableReducer;

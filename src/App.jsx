@@ -6,13 +6,9 @@ import TablePage from './pages/TablePage/TablePage.jsx';
 function App() {
     return (
         <div>
-            <TablePage/>
-            {/* <Header /> */}
-            {/* <Routes>
-                <Route path="/about" element={<About/>} />
-                <Route path="/" element={<Galery />} />
-                <Route path="/details/*" element={<PictureDetails />} />
-            </Routes> */}
+            <Routes>
+                <Route path="/*" element={<TablePage/>} />
+            </Routes>
         </div>
 
     )

@@ -20,7 +20,7 @@ function Table({headers, data}) {
                     {header.name}
                     <img className={styles.sortImage} 
                     src={header.name === 'Название' ? sortImageByDesc : sortImage} 
-                    alt='Sort Image' 
+                    alt='Sort png' 
                     />
                     </th>
                 })}
