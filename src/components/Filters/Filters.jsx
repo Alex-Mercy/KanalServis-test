@@ -2,11 +2,11 @@ import React, { Fragment, useEffect, useRef, useState } from 'react';
 import cn from "classnames";
 import { useDispatch } from 'react-redux';
 
-import styles from './Sort.module.scss'
-import { setSortBy } from '../../store/tableReducer';
+import styles from './Filters.module.scss'
+import { setFilter } from '../../store/tableReducer';
 
 
-function Sort({ items, sortBy }) {
+function Filters({items, filter}) {
     const [visiblePopup, setVisiblePopup] = useState(false);
     const sortRef = useRef();
     const dispatch = useDispatch();
@@ -29,8 +29,7 @@ function Sort({ items, sortBy }) {
     }, []);
 
     const selectItem = (e) => {
-        dispatch(setSortBy(items.find(item => item.name === e.target.innerText).type));
-        
+        dispatch(setFilter(items.find(item => item.name === e.target.innerText).type));   
     }
 
     return (
@@ -39,7 +38,7 @@ function Sort({ items, sortBy }) {
         }, styles.dropdown)}>
             {items.map((item) => {
                 return <Fragment key={item.id} >
-                    <input type="radio" id={item.type} readOnly checked={item.type === sortBy ? true: false} />
+                    <input type="radio" id={item.type} readOnly checked={item.type === filter ? true: false} />
                     <label onClick={selectItem} htmlFor={item.type}>{item.name}</label>
                 </Fragment>
             })}
@@ -47,4 +46,4 @@ function Sort({ items, sortBy }) {
     )
 }
 
-export default Sort;
+export default Filters;

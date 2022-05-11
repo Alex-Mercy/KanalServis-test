@@ -5,21 +5,25 @@ const SET_DATA_FAILURE = 'SET_DATA_FAILURE';
 const SET_CURRENT_PAGE = 'SET_CURRENT_PAGE';
 const SET_SORT_BY = 'SET_SORT_BY';
 const TOGGLE_ORDER = 'TOGGLE_ORDER';
+const SET_FILTER = 'SET_FILTER';
+const ADD_SEARCH_VALUE = 'SEARCH_VALUE';
+
 
 const initialState = {
     isLoaded: false,
     data: [],
     error: null,
     currentPage: 1,
-    perPage: 5,
+    perPage: 10,
     totalCount: 22,
-    sortBy: 'id',
+    sortBy: 'name',
     isAscOrder: true,
+    filter: 'includes',
+    searchValue: ''
 };
 
 
 const tableReducer = (state = initialState, action) => {
-
     switch (action.type) {
         case SET_LOADED: 
             return {
@@ -52,6 +56,16 @@ const tableReducer = (state = initialState, action) => {
                 ...state,
                 isAscOrder: action.payload,
             };
+            case SET_FILTER:
+            return {
+                ...state,
+                filter: action.payload,
+            };
+            case ADD_SEARCH_VALUE:
+            return {
+                ...state,
+                searchValue: action.payload,
+            };
         default:
             return state;
     }
@@ -65,6 +79,8 @@ export const setDataFailure = (error) => ({type: SET_DATA_FAILURE, payload: erro
 export const setCurrentPage = (page) => ({type: SET_CURRENT_PAGE, payload: page});
 export const setSortBy = (type) => ({type: SET_SORT_BY, payload: type});
 export const toggleOrder = (isAscOrder) => ({type: TOGGLE_ORDER, payload: isAscOrder});
+export const setFilter = (filter) => ({type: SET_FILTER, payload: filter});
+export const addSearchValue = (value) => ({type: ADD_SEARCH_VALUE, payload: value});
 
 
 export default tableReducer;

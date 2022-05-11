@@ -11,7 +11,6 @@ function Table({ headers, data, sortBy, isAscOrder }) {
     const dispatch = useDispatch();
 
     const changeSortOrder = (e) => {
-        const sortype = headers.find(item => item.name === e.target.innerText).type;
         dispatch(toggleOrder(!isAscOrder));
         dispatch(setSortBy(headers.find(item => item.name === e.target.innerText).type));
     }
@@ -22,7 +21,6 @@ function Table({ headers, data, sortBy, isAscOrder }) {
     } else {
         imageSort = sortImageByDesc;
     }
-
 
     return (
         <div>

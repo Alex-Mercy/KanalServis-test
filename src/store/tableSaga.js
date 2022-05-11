@@ -1,14 +1,14 @@
 import { all, call, put, takeLatest, } from 'redux-saga/effects';
 
-import {setLoaded, setData, setDataFailure } from './tableReducer';
+import { setLoaded, setData, setDataFailure } from './tableReducer';
 import { getData } from './api';
 
 const ON_SET_DATA = 'ON_SET_DATA';
 
-export function* setDataSaga({ payload: {currentPage, perPage, sortBy, isAscOrder}  }) {
+export function* setDataSaga({ payload: { currentPage, perPage, sortBy, isAscOrder, filter, searchValue } }) {
   try {
     yield put(setLoaded(false));
-    const response = yield getData(currentPage, perPage, sortBy, isAscOrder);
+    const response = yield getData(currentPage, perPage, sortBy, isAscOrder, filter, searchValue);
     yield put(setData(response.data))
   } catch (error) {
     yield put(setDataFailure(error));

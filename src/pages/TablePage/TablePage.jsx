@@ -6,11 +6,12 @@ import Search from '../../components/Search/Search';
 import styles from './TablePage.module.css';
 import Paginator from '../../components/common/Paginator/Paginator';
 import Sort from '../../components/Sort/Sort'
+import Filters from '../../components/Filters/Filters'
 import { onSetData } from '../../store/tableReducer';
 
 function TablePage() {
     const dispatch = useDispatch();
-    const {data, currentPage, perPage, sortBy, isAscOrder} = useSelector(({ table }) => table);
+    const {data, currentPage, perPage, sortBy, isAscOrder, filter, searchValue} = useSelector(({ table }) => table);
 
     const headers = [
         { id: 1, type: 'date', name: 'Дата' },
@@ -27,8 +28,8 @@ function TablePage() {
     ];
 
     React.useEffect(() => {
-        dispatch(onSetData({currentPage, perPage, sortBy, isAscOrder}));
-    }, [dispatch, currentPage, perPage, sortBy, isAscOrder]);
+        dispatch(onSetData({currentPage, perPage, sortBy, isAscOrder, filter, searchValue}));
+    }, [dispatch, currentPage, perPage, sortBy, isAscOrder, filter, searchValue]);
 
 
     return (
@@ -42,8 +43,8 @@ function TablePage() {
             <div className={styles.footer}>
                 <div className={styles.filters}>
                     <Search />
-                    <Sort items={filters} />
-                    <Sort items={headers.slice(1)} typeofFilter={sortBy} />
+                    <Filters items={filters} filter={filter} />
+                    <Sort items={headers.slice(1)} sortBy={sortBy} />
                 </div>
                 <Paginator />
             </div>
