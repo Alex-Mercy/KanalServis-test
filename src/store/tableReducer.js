@@ -1,4 +1,5 @@
-const ON_SET_DATA = 'ON_SET_DATA';
+//action types
+export const ON_SET_DATA = 'ON_SET_DATA';
 const SET_DATA = 'SET_DATA';
 const SET_LOADED = 'SET_LOADED';
 const SET_DATA_FAILURE = 'SET_DATA_FAILURE';
@@ -72,6 +73,7 @@ const tableReducer = (state = initialState, action) => {
 
 }
 
+//action creators
 export const onSetData= (data) => ({type: ON_SET_DATA, payload: data});
 export const setLoaded = (payload) => ({type: SET_LOADED, payload});
 export const setData = (data) => ({type: SET_DATA, payload: data})

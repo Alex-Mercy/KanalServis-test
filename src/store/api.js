@@ -4,6 +4,8 @@ const baseUrl = 'https://my-json-server.typicode.com/Alex-Mercy/kanalServis-serv
 
 
 export const getData = async (currentPage, perPage, sortBy, isAscOrder, filter, searchValue) => {
+
+// set filter value in the search bar depending on the selected parameter in the input
     const filterText = filter === 'equal' ? '='
         : filter === 'includes' ? '_like='
             : filter === 'less' ? '_lte='

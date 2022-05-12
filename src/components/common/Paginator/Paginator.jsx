@@ -9,6 +9,7 @@ import { Link } from 'react-router-dom';
 function Paginator() {
   const dispatch = useDispatch();
   const { currentPage, perPage, totalCount } = useSelector(({ table }) => table);
+  
   const pagesCount = Math.ceil(totalCount / perPage);
   const pages = Array(pagesCount).fill().map((e, i) => i + 1);
 
@@ -19,7 +20,7 @@ function Paginator() {
   const onDecrementPage = () => {
       dispatch(setCurrentPage(currentPage - 1));
   }
-
+  console.log("sdg");
 
   return (
     <div className={styles.pagination}>

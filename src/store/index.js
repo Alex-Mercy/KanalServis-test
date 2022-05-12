@@ -5,6 +5,7 @@ import { all } from 'redux-saga/effects';
 import table from './tableReducer';
 import  tableSaga  from './tableSaga';
 
+// root saga and root reducer
 export function* rootSaga() {
   yield all([
     tableSaga(),

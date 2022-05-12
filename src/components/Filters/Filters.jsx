@@ -5,7 +5,6 @@ import { useDispatch } from 'react-redux';
 import styles from './Filters.module.scss'
 import { setFilter } from '../../store/tableReducer';
 
-
 function Filters({items, filter}) {
     const [visiblePopup, setVisiblePopup] = useState(false);
     const sortRef = useRef();
@@ -17,6 +16,7 @@ function Filters({items, filter}) {
         setVisiblePopup(!visiblePopup);
     }
 
+    // function collapses the list when clicked outside of popup list
     const handleOutsideClick = (event) => {
         const path = event.path || (event.composedPath && event.composedPath());
         if (!path.includes(sortRef.current)) {

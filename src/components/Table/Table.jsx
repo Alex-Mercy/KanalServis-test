@@ -14,7 +14,8 @@ function Table({ headers, data, sortBy, isAscOrder }) {
         dispatch(toggleOrder(!isAscOrder));
         dispatch(setSortBy(headers.find(item => item.name === e.target.innerText).type));
     }
-    
+
+    //setting the sort order by value from the state
     let imageSort;
     if (isAscOrder === true) {
         imageSort = sortImageByAsc;
@@ -28,7 +29,7 @@ function Table({ headers, data, sortBy, isAscOrder }) {
                 <thead>
                     <tr className={styles.tableHeader}>
                         <th>Дата</th>
-                        {headers.slice(1).map(header => {
+                        {headers.slice(1).map(header => { /* slice because we need sort by all headers except 'name'*/
                             return <th
                                 className={styles.headerWithFilter}
                                 key={header.id}

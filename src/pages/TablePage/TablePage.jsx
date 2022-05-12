@@ -11,8 +11,9 @@ import { onSetData } from '../../store/tableReducer';
 
 function TablePage() {
     const dispatch = useDispatch();
-    const {data, currentPage, perPage, sortBy, isAscOrder, filter, searchValue} = useSelector(({ table }) => table);
+    const { data, currentPage, perPage, sortBy, isAscOrder, filter, searchValue } = useSelector(({ table }) => table);
 
+    // creating an array of headers for the table
     const headers = [
         { id: 1, type: 'date', name: 'Дата' },
         { id: 2, type: 'name', name: 'Название' },
@@ -20,6 +21,7 @@ function TablePage() {
         { id: 4, type: 'distance', name: 'Расстояние' }
     ];
 
+    // creating an array of filters for the table
     const filters = [
         { id: 1, type: 'equal', name: 'Равно' },
         { id: 2, type: 'includes', name: 'Содержит' },
@@ -28,8 +30,8 @@ function TablePage() {
     ];
 
     React.useEffect(() => {
-        dispatch(onSetData({currentPage, perPage, sortBy, isAscOrder, filter, searchValue}));
-    }, [dispatch, currentPage, perPage, sortBy, isAscOrder, filter, searchValue]);
+        dispatch(onSetData({ currentPage, perPage, sortBy, isAscOrder, filter, searchValue }));
+    }, [dispatch, currentPage, sortBy, isAscOrder, filter, searchValue]);
 
 
     return (
@@ -44,7 +46,10 @@ function TablePage() {
                 <div className={styles.filters}>
                     <Search />
                     <Filters items={filters} filter={filter} />
-                    <Sort items={headers.slice(1)} sortBy={sortBy} />
+                    <Sort 
+                    items={headers.slice(1)} /* sort by all headers except 'name'*/
+                    sortBy={sortBy} 
+                    /> 
                 </div>
                 <Paginator />
             </div>

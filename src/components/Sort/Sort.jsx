@@ -17,6 +17,7 @@ function Sort({ items, sortBy }) {
         setVisiblePopup(!visiblePopup);
     }
 
+    // function collapses the list when clicked outside of popup list
     const handleOutsideClick = (event) => {
         const path = event.path || (event.composedPath && event.composedPath());
         if (!path.includes(sortRef.current)) {
