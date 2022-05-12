@@ -1,0 +1,21 @@
+{
+  "files": {
+    "main.css": "/KanalServis-test/static/css/main.51363cb9.chunk.css",
+    "main.js": "/KanalServis-test/static/js/main.23f2e033.chunk.js",
+    "main.js.map": "/KanalServis-test/static/js/main.23f2e033.chunk.js.map",
+    "runtime-main.js": "/KanalServis-test/static/js/runtime-main.1335d703.js",
+    "runtime-main.js.map": "/KanalServis-test/static/js/runtime-main.1335d703.js.map",
+    "static/js/2.54c4ff7f.chunk.js": "/KanalServis-test/static/js/2.54c4ff7f.chunk.js",
+    "static/js/2.54c4ff7f.chunk.js.map": "/KanalServis-test/static/js/2.54c4ff7f.chunk.js.map",
+    "index.html": "/KanalServis-test/index.html",
+    "precache-manifest.87be0d913063be41b9a87b8c896d774b.js": "/KanalServis-test/precache-manifest.87be0d913063be41b9a87b8c896d774b.js",
+    "service-worker.js": "/KanalServis-test/service-worker.js",
+    "static/css/main.51363cb9.chunk.css.map": "/KanalServis-test/static/css/main.51363cb9.chunk.css.map"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.1335d703.js",
+    "static/js/2.54c4ff7f.chunk.js",
+    "static/css/main.51363cb9.chunk.css",
+    "static/js/main.23f2e033.chunk.js"
+  ]
+}
