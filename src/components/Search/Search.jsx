@@ -6,7 +6,7 @@ import SearchSvg from '../common/Svg/SearchSvg';
 import styles from './Search.module.scss';
 import { addSearchValue } from '../../store/tableReducer';
 
-function Search() {
+export default React.memo(function Search() {
   const dispatch = useDispatch();
   const [searchValue, setSearchValue] = useState("");
 
@@ -33,6 +33,4 @@ function Search() {
       <SearchSvg setValue={handleClick}/>
     </div>
   )
-}
-
-export default Search;
+})

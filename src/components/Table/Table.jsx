@@ -7,14 +7,14 @@ import sortImageByAsc from '../../assets/images/sortByAsc.png';
 import sortImageByDesc from '../../assets/images/sortByDesc.png';
 import { setSortBy, toggleOrder } from '../../store/tableReducer';
 
-function Table({ headers, data, sortBy, isAscOrder }) {
+export default React.memo (function Table({ headers, data, sortBy, isAscOrder }) {
     const dispatch = useDispatch();
 
     const changeSortOrder = (e) => {
         dispatch(toggleOrder(!isAscOrder));
         dispatch(setSortBy(headers.find(item => item.name === e.target.innerText).type));
     }
-
+    
     //setting the sort order by value from the state
     let imageSort;
     if (isAscOrder === true) {
@@ -57,6 +57,4 @@ function Table({ headers, data, sortBy, isAscOrder }) {
             </table>
         </div>
     )
-}
-
-export default Table
+})

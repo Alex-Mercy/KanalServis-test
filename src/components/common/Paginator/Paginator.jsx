@@ -1,14 +1,13 @@
 import React from 'react'
 import cn from "classnames";
-import { useSelector, useDispatch, } from 'react-redux';
+import { useDispatch, } from 'react-redux';
 
 import styles from './Paginator.module.scss'
 import { setCurrentPage } from '../../../store/tableReducer';
 import { Link } from 'react-router-dom';
 
-function Paginator() {
+export default React.memo(function Paginator({currentPage, perPage, totalCount}) {
   const dispatch = useDispatch();
-  const { currentPage, perPage, totalCount } = useSelector(({ table }) => table);
   
   const pagesCount = Math.ceil(totalCount / perPage);
   const pages = Array(pagesCount).fill().map((e, i) => i + 1);
@@ -20,7 +19,7 @@ function Paginator() {
   const onDecrementPage = () => {
       dispatch(setCurrentPage(currentPage - 1));
   }
-  console.log("sdg");
+
 
   return (
     <div className={styles.pagination}>
@@ -57,6 +56,4 @@ function Paginator() {
 
     </div>
   )
-}
-
-export default Paginator
+})

@@ -6,11 +6,11 @@ import styles from './Sort.module.scss'
 import { setSortBy } from '../../store/tableReducer';
 
 
-function Sort({ items, sortBy }) {
+export default React.memo(function Sort({ items, sortBy }) {
     const [visiblePopup, setVisiblePopup] = useState(false);
     const sortRef = useRef();
     const dispatch = useDispatch();
-
+    
     const toggleVisiblePopup = (e) => {
         e.preventDefault();
         e.stopPropagation();
@@ -38,7 +38,7 @@ function Sort({ items, sortBy }) {
         <div ref={sortRef} onClick={toggleVisiblePopup} className={cn({
             [styles.expanded]: visiblePopup === true
         }, styles.dropdown)}>
-            {items.map((item) => {
+            {items.slice(1).map((item) => { /* sort by all headers except 'name'*/
                 return <Fragment key={item.id} >
                     <input type="radio" id={item.type} readOnly checked={item.type === sortBy ? true: false} />
                     <label onClick={selectItem} htmlFor={item.type}>{item.name}</label>
@@ -46,6 +46,4 @@ function Sort({ items, sortBy }) {
             })}
         </div>
     )
-}
-
-export default Sort;
+})

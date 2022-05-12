@@ -5,11 +5,11 @@ import { useDispatch } from 'react-redux';
 import styles from './Filters.module.scss'
 import { setFilter } from '../../store/tableReducer';
 
-function Filters({items, filter}) {
+export default React.memo(function Filters({items, filter}) {
     const [visiblePopup, setVisiblePopup] = useState(false);
     const sortRef = useRef();
     const dispatch = useDispatch();
-
+    
     const toggleVisiblePopup = (e) => {
         e.preventDefault();
         e.stopPropagation();
@@ -44,6 +44,4 @@ function Filters({items, filter}) {
             })}
         </div>
     )
-}
-
-export default Filters;
+})
